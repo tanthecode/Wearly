@@ -3,6 +3,8 @@ import Header from './components/common/Header'
 import ButtonComp from './components/common/Button'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import Rentals from './pages/Rentals'
+import ProductPage from './components/products/ProductPage'
 import ProfilePage from './components/profile/UserProfile'
 
 function App() {
@@ -14,7 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<div>Explore Page</div>} />
-            <Route path="/rentals" element={<div>Rentals Page</div>} />
+            <Route path="/rentals" element={<Rentals/>} />
+            <Route path="/rentals/:id" element={<ProductPage />} /> 
             {/* <Route path="/swapping" element={<div>Swapping Page</div>} /> */}
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/login" element={<Login />} />
