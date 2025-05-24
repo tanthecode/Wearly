@@ -83,10 +83,11 @@ const Header = () => {
                 <span className="text-gray-700 font-medium">{user.displayName}</span>
                 <button
   onClick={handleSignOut}
-  className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg shadow-sm transition-all duration-200"
+  className="px-4 py-1.5 bg-white text-black border border-gray-300 rounded-md text-sm font-medium hover:text-red-600 transition-colors duration-200 shadow-sm"
 >
   Sign Out
 </button>
+
 
               </div>
             ) : (
