@@ -82,11 +82,12 @@ const Header = () => {
               <div className="flex items-center space-x-3">
                 <span className="text-gray-700 font-medium">{user.displayName}</span>
                 <button
-                  onClick={handleSignOut}
-                  className="text-sm text-red-600 hover:text-red-800 transition duration-200"
-                >
-                  Sign Out
-                </button>
+  onClick={handleSignOut}
+  className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg shadow-sm transition-all duration-200"
+>
+  Sign Out
+</button>
+
               </div>
             ) : (
               <button
