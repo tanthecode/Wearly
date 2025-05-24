@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
 import { Heart, MessageCircle, Eye } from 'lucide-react';
 
-
-
 const ProfilePage = () => {
-  const navigate = useNavigate();
-
   const [activeTab, setActiveTab] = useState('my-listings');
 
   const rentalItems = [
@@ -66,15 +60,13 @@ const ProfilePage = () => {
             <div className="flex-1">
               <div className="mb-4">
                 <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-3xl md:text-5xl" style={{ fontFamily: "'Jeju Myeongjo', serif" }}>Kushal S</h1>
-
+                  <h1 className="text-3xl md:text-4xl font-bold">Sarah Johnson</h1>
                 </div>
               </div>
               
               <div className="flex gap-4 mb-6">
-                <button className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition">
-                  Upload New Item
-                  
+                <button className="bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                  Follow
                 </button>
               </div>
             </div>
