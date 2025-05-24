@@ -25,34 +25,43 @@ const Login = () => {
   }, [tab]);
 
   const handleGoogleAuth = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
 
-      if (tab === 'signup') {
-        await fetch('https://wearly-mocha.vercel.app', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            firstName,
-            lastName,
-            collegeName,
-            collegeEmail
-          }),
-        });
-        alert("Registered Successfully");
-      } else {
-        alert("Signed In Successfully");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Authentication Failed");
+    if (tab === 'signup') {
+      await fetch('https://wearly-mocha.vercel.app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          firstName,
+          lastName,
+          collegeName,
+          collegeEmail
+        }),
+      });
+      alert("Registered Successfully");
+    } else {
+      alert("Signed In Successfully");
     }
-  };
+
+    
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        window.location.href = 'https://wearly-mocha.vercel.app/explore';
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+    alert("Authentication Failed");
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black overflow-hidden select-none">
