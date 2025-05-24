@@ -8,7 +8,7 @@ export default function ProductPage() {
 
   if (!product) {
     return <div className="p-8 text-center">Product not found.</div>;
-  }
+  } 
 
   return (
     <div className="max-w-3xl mx-auto p-8">
