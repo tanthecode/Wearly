@@ -52,7 +52,7 @@ const Login = () => {
     
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        window.location.href = 'https://wearly-mocha.vercel.app/explore';
+        window.location.href = 'https://wearly-mocha.vercel.app';
       }
     });
 
