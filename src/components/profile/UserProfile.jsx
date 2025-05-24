@@ -60,7 +60,10 @@ const ProfilePage = () => {
             <div className="flex-1">
               <div className="mb-4">
                 <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-3xl md:text-4xl font-bold">Sarah Johnson</h1>
+                  <h1 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: "'Jeju Myeongjo', serif" }}>
+  Sarah Johnson
+</h1>
+
                 </div>
               </div>
               
