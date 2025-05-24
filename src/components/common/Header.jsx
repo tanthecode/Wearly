@@ -31,6 +31,7 @@ const Header = () => {
     }
   };
 
+  // Get first name from display name or email
   const getFirstName = () => {
     if (!user) return '';
     if (user.displayName) {
@@ -40,7 +41,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100" style={{ fontFamily: "'Jeju Myeongjo', serif" }}>
+    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
@@ -48,8 +49,12 @@ const Header = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span 
-                className="text-3xl tracking-normal leading-tight"
-                style={{ fontWeight: "300", letterSpacing: "0.01em" }}
+                className="text-3xl tracking-normal leading-tight" 
+                style={{ 
+                  fontFamily: "'Jeju Myeongjo', serif",
+                  fontWeight: "300",
+                  letterSpacing: "0.01em"
+                }}
               >
                 Wearly
               </span>
