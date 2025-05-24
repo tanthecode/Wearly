@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Heart, MessageCircle, Eye } from 'lucide-react';
 
+
+
 const ProfilePage = () => {
+  const navigate = useNavigate();
+
   const [activeTab, setActiveTab] = useState('my-listings');
 
   const rentalItems = [
@@ -66,8 +72,9 @@ const ProfilePage = () => {
               </div>
               
               <div className="flex gap-4 mb-6">
-                <button className="bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                  Follow
+                <button   onClick={() => navigate('/upload')} className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition">
+                  Upload New Item
+                  
                 </button>
               </div>
             </div>
