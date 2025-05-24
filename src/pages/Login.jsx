@@ -31,7 +31,7 @@ const Login = () => {
       const user = result.user;
 
       if (tab === 'signup') {
-        await fetch('https://wearly-mocha.vercel.app/login', {
+        await fetch('https://wearly-mocha.vercel.app', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
