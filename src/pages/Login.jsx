@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';  // <-- Import useNavigate
 
 const Login = () => {
   const [tab, setTab] = useState("signin");
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [collegeName, setCollegeName] = useState('');
   const [collegeEmail, setCollegeEmail] = useState('');
-
   const [showSignupFields, setShowSignupFields] = useState(false);
   const [animateSignupFields, setAnimateSignupFields] = useState(false);
+
+  const navigate = useNavigate(); // <-- Initialize navigate
 
   useEffect(() => {
     if (tab === "signup") {
@@ -25,48 +26,58 @@ const Login = () => {
   }, [tab]);
 
   const handleGoogleAuth = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
 
-    if (tab === 'signup') {
-      await fetch('https://wearly-mocha.vercel.app', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          firstName,
-          lastName,
-          collegeName,
-          collegeEmail
-        }),
-      });
-      alert("Registered Successfully");
-    } else {
-      alert("Signed In Successfully");
-    }
-
-    
-    auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        window.location.href = 'https://wearly-mocha.vercel.app';
+      if (tab === 'signup') {
+        await fetch('https://wearly-mocha.vercel.app', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            firstName,
+            lastName,
+            collegeName,
+            collegeEmail
+          }),
+        });
+        alert("Registered Successfully");
+      } else {
+        alert("Signed In Successfully");
       }
-    });
 
-  } catch (err) {
-    console.error(err);
-    alert("Authentication Failed");
-  }
-};
+      // Instead of window.location.href, use navigate:
+      auth.onAuthStateChanged((authUser) => {
+        if (authUser) {
+          navigate('/explore');  // <-- Navigate internally to /explore route
+        }
+      });
 
+    } catch (err) {
+      console.error(err);
+      alert("Authentication Failed");
+    }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black overflow-hidden select-none">
-      <div className="w-full max-w-md p-8 rounded-3xl border border-black shadow-2xl bg-white transition-all duration-300 ease-in-out">
+    <div className="w-full h-screen relative overflow-hidden bg-white text-black select-none flex items-center justify-center">
+      
+      {/* Background image div */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/premium-vector/abstract-background-black-lines-white-background-simple-design_888684-223.jpg?w=2000')",
+        }}
+      ></div>
 
+      {/* Main login form container */}
+      <div className="relative z-10 w-full max-w-md p-8 rounded-3xl border border-black shadow-2xl bg-white/70 backdrop-blur-sm transition-all duration-300 ease-in-out">
+        
         <div className="flex justify-center gap-4 mb-8">
           <button
             onClick={() => setTab("signin")}
