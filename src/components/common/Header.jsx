@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonComp from './Button';
 import { useCart } from '../../context/CartContext';
+import { auth } from '../../firebase';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const { getCartCount } = useCart();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleLoginClick = () => {
     navigate('/login');
@@ -20,6 +29,15 @@ const Header = () => {
     } catch (error) {
       console.error('Sign-out failed:', error);
     }
+  };
+
+  // Get first name from display name or email
+  const getFirstName = () => {
+    if (!user) return '';
+    if (user.displayName) {
+      return user.displayName.split(' ')[0];
+    }
+    return user.email.split('@')[0];
   };
 
   return (
@@ -84,12 +102,16 @@ const Header = () => {
               )}
             </Link>
 
-            {isLoggedIn ? (
-              <img 
-                src="/path-to-avatar.jpg" 
-                alt="Profile" 
-                className="h-8 w-8 rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 transform"
-              />
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-700 font-medium">{user.displayName}</span>
+                <button
+                  onClick={handleSignOut}
+                  className="px-4 py-2 border border-gray-300 rounded-md text-sm text-black hover:text-red-600 transition-all duration-200"
+                >
+                  Sign Out
+                </button>
+              </div>
             ) : (
               <button
                 onClick={handleLoginClick}
