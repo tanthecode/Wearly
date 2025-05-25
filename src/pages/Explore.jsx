@@ -27,7 +27,7 @@ export default function Explore() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <div className="container mx-auto px-4 py-8 backdrop-blur-sm bg-white/60 rounded-xl shadow-lg">
+      <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4 text-black">Explore Products</h1>
           <div className="flex flex-col md:flex-row gap-4">
