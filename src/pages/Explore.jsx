@@ -28,7 +28,7 @@ export default function Explore() {
       }}
     >
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
+        <div className="mb-8 rounded-xl border border-white/30 bg-white/20 backdrop-blur-md p-6">
           <h1 className="text-3xl font-bold mb-4 text-black">Explore Products</h1>
           <div className="flex flex-col md:flex-row gap-4">
             <input
