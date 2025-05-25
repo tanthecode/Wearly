@@ -42,7 +42,11 @@ const ProfilePage = () => {
       {/* Hero Section with Profile */}
       <div className="relative">
         {/* Background gradient */}
-        <div className="h-48 bg-gradient-to-r from-gray-100 to-gray-200"></div>
+        <div
+  className="h-48 bg-cover bg-center"
+  style={{ backgroundImage: "url('https://img.freepik.com/premium-vector/abstract-background-black-lines-white-background-simple-design_888684-223.jpg?w=2000')" }}
+></div>
+
         
         {/* Profile Section */}
         <div className="max-w-6xl mx-auto px-6 relative">
