@@ -24,13 +24,11 @@ const Upload = () => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     if (files.length > 0) {
-      // Update form data with new images
       setFormData(prev => ({
         ...prev,
         images: [...prev.images, ...files]
       }));
 
-      // Create preview URLs for new images
       files.forEach(file => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -56,9 +54,17 @@ const Upload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8"
+      style={{
+        backgroundImage: 'url(https://img.freepik.com/premium-vector/abstract-background-black-lines-white-background-simple-design_888684-223.jpg?w=2000)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-8">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-black">
               List Your Outfit for Rent
@@ -72,15 +78,13 @@ const Upload = () => {
               </svg>
             </button>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Image Upload */}
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
               <label className="block text-sm font-medium text-black mb-2">
                 Product Images
               </label>
-              
-              {/* Image Gallery */}
               {previewUrls.length > 0 && (
                 <div className="mb-4 grid grid-cols-3 gap-4">
                   {previewUrls.map((url, index) => (
