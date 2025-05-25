@@ -8,8 +8,6 @@ export default function Explore() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const { addToRental } = useCart();
 
-  console.log('Explore products:', products); // Debug log
-
   const categories = ['all', ...new Set(products.map(product => product.category))];
 
   const filteredProducts = products.filter(product => {
@@ -19,38 +17,46 @@ export default function Explore() {
     return matchesSearch && matchesCategory;
   });
 
-  console.log('Filtered products:', filteredProducts); // Debug log
-
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">Explore Products</h1>
-        <div className="flex flex-col md:flex-row gap-4">
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {categories.map(category => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </option>
-            ))}
-          </select>
+    <div
+      className="min-h-screen w-full"
+      style={{
+        backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-background-black-lines-white-background-simple-design_888684-223.jpg?w=2000')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="container mx-auto px-4 py-8 backdrop-blur-sm bg-white/60 rounded-xl shadow-lg">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-4 text-black">Explore Products</h1>
+          <div className="flex flex-col md:flex-row gap-4">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {categories.map(category => (
+                <option key={category} value={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-      </div>
 
-      <ProductGrid
-        products={filteredProducts}
-        onAddToRent={(product) => addToRental(product)}
-      />
+        <ProductGrid
+          products={filteredProducts}
+          onAddToRent={(product) => addToRental(product)}
+        />
+      </div>
     </div>
   );
-} 
+}
