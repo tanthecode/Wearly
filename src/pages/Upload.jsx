@@ -64,7 +64,8 @@ const Upload = () => {
       }}
     >
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white bg-opacity-90 rounded-2xl shadow-xl p-8">
+        {/* Glassmorphic Container */}
+        <div className="rounded-2xl p-8 shadow-xl border border-white/30 bg-white/10 backdrop-blur-lg">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-black">
               List Your Outfit for Rent
@@ -79,6 +80,7 @@ const Upload = () => {
             </button>
           </div>
 
+          {/* Form Start */}
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Image Upload */}
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
@@ -163,7 +165,6 @@ const Upload = () => {
             <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 space-y-8">
               <h3 className="text-xl font-semibold text-black border-b pb-4">Product Details</h3>
               
-              {/* Product Title */}
               <div>
                 <label htmlFor="title" className="block text-sm font-medium text-black mb-2">
                   Product Title
@@ -180,7 +181,6 @@ const Upload = () => {
                 />
               </div>
 
-              {/* Size and Price Fields */}
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-1">
                   <label htmlFor="size" className="block text-sm font-medium text-black mb-2">
@@ -241,7 +241,6 @@ const Upload = () => {
                 </div>
               </div>
 
-              {/* Product Description */}
               <div>
                 <label htmlFor="description" className="block text-sm font-medium text-black mb-2">
                   Product Description
@@ -262,7 +261,6 @@ const Upload = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div>
               <button
                 type="submit"
