@@ -65,7 +65,7 @@ const Upload = () => {
     >
       <div className="max-w-3xl mx-auto">
         {/* Glassmorphic Container */}
-        <div className="rounded-2xl p-8 shadow-xl border border-white/30 bg-white/10 backdrop-blur-lg">
+        <div className="rounded-2xl p-8 shadow-xl border border-white/30 bg-white/70 backdrop-blur-lg">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-black">
               List Your Outfit for Rent
